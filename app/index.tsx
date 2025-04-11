@@ -1,18 +1,26 @@
 import CustomButton from "@/components/Title";
 import React, { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 
 export default function HomeScreen() {
-    const [cont, setcount] = useState(0);
+    const name = "widson"
 
-    return (                                    
-        <View>
-            <Text>bem-vindo ao meu app!</Text>
-            <Text>Contador:{cont}</Text>
-            <Button title="diminuir" onPress={() => {setcount(cont - 1)}}/>
-                <Button title="aumentar" onPress={() => {setcount(cont + 1)}}/>
+    const [count, setcount] = useState(0);
+    const [nome, setNome] = useState(name);
+
+    return (                   
+        <View style={{flex: 1, justifyContent:"center", alignItems:"center"}}>
+            <Text>bem-vindo ao meu app!{nome}</Text>
+            <Text>Contador:{count}</Text>
+                        
+                <Button title="diminuir" onPress={() => {setcount(count - 1)}}/>
+                <Button title="aumentar" onPress={() => {setcount(count + 1)}}/>
                 <Button title="reiniciar" onPress={() => {setcount(0)}}/>
-                    <CustomButton title = "Name"/>
+
+                    <TextInput placeholder="Digite algo" onChangeText={setNome}/>
+
+               <CustomButton title="Botão vermelho" onPress={() => (setNome('widson'+ count))}/>
+                
         </View>
     );
 }
